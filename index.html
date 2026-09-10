@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiku: Primed Listening</title>
-    <meta name="description" content="A browser extension for YouTube and Netflix that automatically pauses video after every subtitle line to help you master target language listening.">
-    
+    <meta name="description" content="A browser extension that pauses video on every subtitle line so language learners get a gap to process the dialogue. Works on YouTube, Netflix and most other video sites.">
+
     <link rel="icon" type="image/png" href="assets/icon.png">
-    
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/icon.png" alt="Kiku Logo" class="logo-img"> Kiku: Primed Listening
+                <img src="assets/icon.png" alt="" class="logo-img"> Kiku: Primed Listening
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
-                <a href="https://github.com/leilei-anthony/primed-listening" target="_blank" class="github-link">GitHub</a>
-                <a href="https://chromewebstore.google.com/detail/kiku-primed-listening/kaogbooahpdhbhmpiijlcbajkmpepflh" target="_blank" class="btn btn-primary">Add to Chrome</a>
+                <a href="#pricing">Pro</a>
+                <a href="https://github.com/leilei-anthony/primed-listening" target="_blank" rel="noopener" class="github-link">GitHub</a>
+                <a href="https://chromewebstore.google.com/detail/kiku-primed-listening/kaogbooahpdhbhmpiijlcbajkmpepflh" target="_blank" rel="noopener" class="btn btn-primary">Add to Chrome</a>
             </div>
         </div>
     </nav>
@@ -32,14 +33,16 @@
     <header class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <span class="badge">Version 1.0 Now Available</span>
-                <h1>Master your target langauge from your favorite shows and movies.</h1>
+                <span class="badge">Version 1.3 now available</span>
+                <h1>Master your target language from your favorite shows and movies.</h1>
                 <p class="subtitle">
-                    Kiku automatically pauses YouTube and Netflix videos after every line of dialogue, giving your brain the "processing time" it needs to truly understand.
+                    Kiku pauses video on every subtitle line so you can process what was said,
+                    then carries on. It works on YouTube, Netflix and most other video sites.
                 </p>
                 <div class="cta-group">
-                    <a href="https://chromewebstore.google.com/detail/kiku-primed-listening/kaogbooahpdhbhmpiijlcbajkmpepflh" target="_blank" class="btn btn-primary btn-lg">Add to Chrome — It's Free</a>
-                    <span class="sub-cta">Compatible with YouTube & Netflix</span>
+                    <a href="https://chromewebstore.google.com/detail/kiku-primed-listening/kaogbooahpdhbhmpiijlcbajkmpepflh" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Add to Chrome — It's Free</a>
+                    <a href="#pricing" class="btn btn-ghost btn-lg">See Kiku Pro</a>
+                    <span class="sub-cta">Free and open source. Chrome and Brave.</span>
                 </div>
             </div>
             <div class="hero-image">
@@ -49,7 +52,10 @@
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
                     </div>
-                    <img src="assets/demo.gif" alt="Kiku Extension Demo" class="app-preview">
+                    <video class="app-preview" autoplay muted loop playsinline
+                           poster="assets/screenshot.png" aria-label="Kiku pausing a video after a subtitle line">
+                        <source src="assets/demo.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -60,33 +66,71 @@
             <div class="section-header">
                 <h2>Why use Kiku?</h2>
                 <p>
-                    Automates the "Primed Listening" technique I learned from 
-                    <a href="https://www.youtube.com/@mattvsjapan" target="_blank" style="text-decoration: underline; color: inherit;">Matt vs Japan</a>'s 
-                    <a href="https://www.skool.com/mattvsjapan/about" target="_blank" style="text-decoration: underline; color: inherit;">Immersion Dojo</a>. 
-                    It creates a silence gap after every sentence, giving your brain the instant it needs to fully decode the audio.
+                    Automates the "Primed Listening" technique I learned from
+                    <a href="https://www.youtube.com/@mattvsjapan" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Matt vs Japan</a>'s
+                    <a href="https://www.skool.com/mattvsjapan/about" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Immersion Dojo</a>.
+                    It creates a silence gap on every line, giving your brain the instant it needs to fully decode the audio.
                 </p>
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="icon">⏸️</div>
-                    <h3>Smart Auto-Pause</h3>
-                    <p>Detects when a subtitle line ends and pauses the video instantly.</p>
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="3.5" height="16" rx="1.75"/><rect x="13.5" y="4" width="3.5" height="16" rx="1.75"/></svg></div>
+                    <h3>Smart auto-pause</h3>
+                    <p>Pauses on every subtitle line, holding for a gap scaled to how long the line is.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="icon">🙈</div>
-                    <h3>Hide Subtitles</h3>
-                    <p>Subtitles stay hidden while listening, and only appear when the video pauses.</p>
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 3 11 9 11"/><path d="M5.5 15.5a8.5 8.5 0 1 0 2-9L3 11"/></svg></div>
+                    <h3>Replay the last line</h3>
+                    <p>One key jumps back and plays the line again. Press it again for another listen.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="icon">⚡</div>
-                    <h3>Custom Hotkeys</h3>
-                    <p>Map your own shortcuts to toggle the extension on/off without breaking your flow.</p>
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M6.61 6.61A18.15 18.15 0 0 0 2 12s3 8 10 8a9.12 9.12 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg></div>
+                    <h3>Hide subtitles</h3>
+                    <p>Subtitles stay hidden while listening and appear only when the video pauses.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>Runs entirely locally. No data collection, no tracking, no external servers.</p>
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><ellipse cx="12" cy="12" rx="4" ry="9"/></svg></div>
+                    <h3>Beyond YouTube and Netflix</h3>
+                    <p>Reads captions through the browser's own caption track, so most players work with no setup.</p>
                 </div>
+                <div class="feature-card">
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4.2" y1="7.5" x2="19.8" y2="16.5"/><line x1="4.2" y1="16.5" x2="19.8" y2="7.5"/></svg></div>
+                    <h3>Freeze instead of pausing</h3>
+                    <p>Holds the gap without the player surfacing its control bar over the picture.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5 11 12 4 18.5Z"/><path d="M13 5.5 20 12 13 18.5Z"/></svg></div>
+                    <h3>Dead-air speed-up <span class="tag-pro">PRO</span></h3>
+                    <p>Plays faster through music and silence, dropping back the moment dialogue returns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dead-air">
+        <div class="container">
+            <div class="section-header">
+                <h2>Stop waiting through the music.</h2>
+                <p>Long stretches without dialogue are dead time in a study session. Kiku Pro plays them faster.</p>
+            </div>
+
+            <div class="demo-panel">
+                <div class="track" aria-hidden="true">
+                    <div class="seg talk" style="flex: 22"><small>1&times;</small></div>
+                    <div class="seg gap" style="flex: 23"><small>2&times;</small></div>
+                    <div class="seg talk" style="flex: 17"><small>1&times;</small></div>
+                    <div class="seg gap" style="flex: 22"><small>2&times;</small></div>
+                    <div class="seg talk" style="flex: 16"><small>1&times;</small></div>
+                    <span class="playhead"></span>
+                </div>
+                <div class="legend">
+                    <span><span class="sw talk"></span> Dialogue, normal speed</span>
+                    <span><span class="sw gap"></span> No subtitles, sped up</span>
+                </div>
+                <p class="demo-note">
+                    Dialogue always plays at normal speed and still pauses on every line. Only the
+                    gaps move faster, and playback drops back the instant the next subtitle appears.
+                </p>
             </div>
         </div>
     </section>
@@ -105,7 +149,7 @@
                 <div class="step">
                     <div class="step-number">02</div>
                     <h3>Watch</h3>
-                    <p>Open any video on Netflix or YouTube with your native subtitles (CC) turned on.</p>
+                    <p>Open a video with subtitles turned on. Beyond YouTube and Netflix, grant the site once from the toolbar.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
@@ -116,16 +160,101 @@
         </div>
     </section>
 
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything you already use stays free.</h2>
+                <p>Pro adds one thing today, and future Pro features on top. It takes nothing away.</p>
+            </div>
+
+            <div class="table-scroll">
+                <table class="compare">
+                    <caption>The free extension is not being paywalled.</caption>
+                    <thead>
+                        <tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Pro</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Auto-pause on every subtitle line</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Replay the last line on a key</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Hide subtitles while playing</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>YouTube and Netflix</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Any other site with subtitles</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Freeze instead of pausing</td><td class="mark yes">Yes</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Speed up when nobody is speaking</td><td class="mark no">&mdash;</td><td class="mark yes">Yes</td></tr>
+                        <tr><td>Future Pro features</td><td class="mark no">&mdash;</td><td class="mark yes">Included</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-cta">
+                <p>Kiku Pro is a one-time purchase. Install the free extension first, then activate it in the popup.</p>
+                <a href="https://lesteranthony.gumroad.com/l/kiku" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Get Kiku Pro</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details>
+                    <summary>Which sites does it work on?</summary>
+                    <p>
+                        YouTube and Netflix work as soon as you install it. Anywhere else, open the popup
+                        and enable that one site. Kiku reads captions through the browser's own caption
+                        track, which covers most players with no setup at all.
+                    </p>
+                </details>
+                <details>
+                    <summary>Will the free features stay free?</summary>
+                    <p>
+                        Yes. Automatic pausing, Replay, subtitle hiding and support for sites beyond
+                        YouTube and Netflix are part of the free extension and are staying there. Pro adds
+                        features rather than fencing off existing ones.
+                    </p>
+                </details>
+                <details>
+                    <summary>Does one purchase cover more than one computer?</summary>
+                    <p>
+                        Yes. The licence is stored in your browser profile, so if you use Chrome sync it
+                        appears on your other machines without re-entering anything.
+                    </p>
+                </details>
+                <details>
+                    <summary>What happens on a video with no subtitles?</summary>
+                    <p>
+                        Nothing changes. The speed-up only ever runs after Kiku has actually read a
+                        subtitle on that video, so a video it cannot read plays normally from start to finish.
+                    </p>
+                </details>
+                <details>
+                    <summary>Is my viewing data collected?</summary>
+                    <p>
+                        No. Subtitle text and playback control happen entirely on your device, and nothing
+                        read from a page ever leaves your browser. The single exception is Kiku Pro: when
+                        you activate a licence, and about once a week afterwards, your licence key is sent
+                        to the payment provider to confirm it is valid. No page content or viewing activity
+                        is ever included, and if you do not buy Pro the extension makes no network requests
+                        at all.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <img src="assets/icon.png" alt="Kiku Logo" class="logo-img"> <strong>Kiku</strong>
+                    <img src="assets/icon.png" alt="" class="logo-img"> <strong>Kiku</strong>
                     <p>Open source language learning tools.</p>
                 </div>
                 <div class="footer-right">
-                    <a href="https://gist.github.com/leilei-anthony/ad1323f34ebe83178dcf643ffa799c2c" target="_blank">Privacy Policy</a>
-                    <a href="https://github.com/leilei-anthony/primed-listening" target="_blank">Source Code</a>
+                    <a href="https://gist.github.com/leilei-anthony/ad1323f34ebe83178dcf643ffa799c2c" target="_blank" rel="noopener">Privacy Policy</a>
+                    <a href="https://github.com/leilei-anthony/primed-listening" target="_blank" rel="noopener">Source Code</a>
+                    <a href="https://lesteranthony.gumroad.com/l/kiku" target="_blank" rel="noopener">Kiku Pro</a>
                 </div>
             </div>
         </div>
